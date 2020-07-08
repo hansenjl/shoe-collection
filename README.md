@@ -2,7 +2,7 @@
 
 - Make a Migration for a Shoe model
     - attributes: brand, color, price, condition
-- Make a model file - inherits from ActiveRecord::Base
+- Make a model file
 - Add a few model methods:
     - #name_and_color
     - #display_price
