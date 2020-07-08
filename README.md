@@ -1,24 +1,15 @@
-# README
+# Wed, July 8 To Do:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Make a Migration for a Shoe model
+    - attributes: brand, color, price, condition
+- Make a model file - inherits from ActiveRecord::Base
+- Add a few model methods:
+    - #name_and_color
+    - #display_price
+    - .most_expensive_shoe
+- Make and Index Route
+   - add seed data
+- Make a Show Route
+- Add links to go from the index to the show route
+- Add links to a layout page
+- Add a custom route that shows the most expensive shoe
