@@ -1,3 +1,10 @@
+# Thurs, July 9 To Do:
+- Create a form for making new shoes and the corresponding new/create actions
+- Demonstrate creating the same form with form_tag, form_for, and form_with
+- Create the edit/update actions for editing a shoe
+- Add a button to delete a shoe
+
+
 # Wed, July 8 To Do:
 
 - Make a Migration for a Shoe model
