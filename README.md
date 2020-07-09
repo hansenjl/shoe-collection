@@ -5,6 +5,40 @@
 - Add a button to delete a shoe
 
 
+```
+<form action="/shoes"  method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>Brand:</label>
+    <input type="text" name="shoes[brand]" id="shoes_brand">
+    <input type="submit" value="Create Shoe">
+</form>
+
+<hr>
+
+<%= form_tag(shoes_path) do  %>
+    <%= label_tag(:brand)  %>
+    <%= text_field_tag(:'shoes[brand]') %>
+    <%= submit_tag("Create Shoe") %>
+<% end %>
+
+<hr>
+
+<%= form_for(@shoe) do |f|%>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+    <%= f.submit %>
+<% end %>
+
+<hr>
+
+<%= form_with(model: @shoe, class: 'new_shoe') do |f|%>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+    <%= f.submit %>
+<% end %>
+```
+
+
 # Wed, July 8 To Do:
 
 - Make a Migration for a Shoe model
