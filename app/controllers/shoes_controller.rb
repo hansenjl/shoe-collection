@@ -4,7 +4,7 @@ class ShoesController < ApplicationController
         @shoes = Shoe.ordered_by_price
     end
 
- 
+
     def show
         @shoe = Shoe.find(params[:id])
     end
