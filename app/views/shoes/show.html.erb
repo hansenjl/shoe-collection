@@ -4,3 +4,7 @@
 <p>Price:  <%= @shoe.display_price %></p>
 
 <p>Limited Edition: <%= @shoe.limited_edition %></p>
+
+<%= link_to("edit shoe", edit_shoe_path(@shoe) )%>
+
+<%= link_to("delete shoe",shoe_path(@shoe), method: 'delete' )%>
