@@ -1,7 +1,6 @@
 <h1> <%= @shoe.brand_and_color %></h1>
 
-
-<p>Price:  <%= @shoe.display_price %></p>
+<p>Price:  <%= number_to_currency(@shoe.price) %></p>
 
 <p>Limited Edition: <%= @shoe.limited_edition %></p>
 
