@@ -46,6 +46,6 @@ class ShoesController < ApplicationController
     private
 
     def shoe_params
-        params.require(:shoe).permit(:brand, :price, :color)
+        params.require(:shoe).permit(:brand, :price, :price_confirmation, :color, :limited_edition)
     end
 end
