@@ -1,8 +1,12 @@
 # Tues, July 14 To Do:
-- Discuss why we use model validations rather than view or controller validations
+- Explain why we use model validations rather than view or controller validations
 - Use the [Active Record Validations Guide](https://guides.rubyonrails.org/active_record_validations.html#common-validation-options) to add standard validations to our data
 - Display error messages using `.errors`
 - Create custom validations
+
+
+
+
 
 # Thurs, July 9 To Do:
 - Create a form for making new shoes and the corresponding new/create actions
