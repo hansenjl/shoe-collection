@@ -6,6 +6,7 @@ class ShoesController < ApplicationController
 
     def new
         @shoe = Shoe.new
+        @shoe.build_brand
     end
 
     def create
@@ -15,6 +16,7 @@ class ShoesController < ApplicationController
           redirect_to shoe_path(@shoe)
        else
           #redisplay the form
+
           render :new
        end
     end
@@ -46,6 +48,6 @@ class ShoesController < ApplicationController
     private
 
     def shoe_params
-        params.require(:shoe).permit(:brand, :price, :price_confirmation, :color, :limited_edition)
+        params.require(:shoe).permit(:price, :price_confirmation, :color, :limited_edition, :brand_id, brand_attributes: [:name])
     end
 end

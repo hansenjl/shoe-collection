@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'brands#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #index
 
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   # get '/shoes/:id', to: 'shoes#show', as: 'shoe'
 
   resources :shoes
-
+  resources :brands, only: [:new, :create, :index, :show]
 
   #show
 

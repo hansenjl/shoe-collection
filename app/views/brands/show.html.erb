@@ -1,0 +1,7 @@
+<h1><%= @brand.name%> </h1>
+
+<h2>Display this brand's shoes here: </h2>
+
+<% @brand.shoes.each do |shoe|%>
+    <div><%= shoe.color %> - <%= number_to_currency(shoe.price) %></div>
+<% end %>

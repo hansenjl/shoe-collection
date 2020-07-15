@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200708150642) do
+ActiveRecord::Schema.define(version: 2020_07_15_150505) do
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shoes", force: :cascade do |t|
-    t.string "brand"
     t.string "color"
     t.float "price"
     t.boolean "limited_edition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "brand_id"
+    t.index ["brand_id"], name: "index_shoes_on_brand_id"
   end
 
 end
