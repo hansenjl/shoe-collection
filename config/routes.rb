@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # get '/shoes/:id', to: 'shoes#show', as: 'shoe'
 
   resources :shoes
-
+  resources :brand, only: [:new, :create, :index, :show]
 
   #show
 
