@@ -15,5 +15,16 @@
 <%= form_for(@brand) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= f.text_field :shoes %>
+<hr>
+    <%= f.fields_for :shoes do |s|%>
+        <%= s.label :price, "Price:" %>
+        <%= s.number_field :price, min: 0, step: 0.01 %><br><br>
+        <%= s.label :color, "Color:"%>
+        <%= s.text_field :color  %><br><br>
+        <%= s.label :limited_edition, "Limited Edition:" %>
+        <%= s.check_box :limited_edition %><br><br>
+    <% end %>
+
     <%= f.submit  %>
 <% end %>

@@ -15,11 +15,13 @@
 
 <%= form_for(@shoe) do |f|%>
     <%= f.label :brand, "Brand:" %>
-    <%= f.text_field :brand %><br><br>
+    <%= f.collection_select :brand_id, Brand.all, :id, :name, prompt: true %>
+    <%= f.fields_for :brand do |b| %>
+      <%= b.label :name %>
+      <%= b.text_field :name %>
+    <% end %><br><br>
     <%= f.label :price, "Price:" %>
     <%= f.number_field :price, min: 0, step: 0.01 %><br><br>
-    <%= f.label :price_confirmation, "Price Confirmation:" %>
-    <%= f.number_field :price_confirmation, min: 0, step: 0.01 %><br><br>
     <%= f.label :color, "Color:"%>
     <%= f.text_field :color  %><br><br>
     <%= f.label :limited_edition, "Limited Edition:" %>
