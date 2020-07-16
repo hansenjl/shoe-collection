@@ -13,9 +13,7 @@
 <% end %>
 
 <%= form_for(@brand) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.text_field :shoes %>
+   <%= render partial: 'fields', locals: {f: f} %>
 <hr>
     <%= f.fields_for :shoes do |s|%>
         <%= s.label :price, "Price:" %>

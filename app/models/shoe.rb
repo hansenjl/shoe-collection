@@ -21,7 +21,6 @@ class Shoe < ApplicationRecord
         self.order(price: :desc)
     end
 
-
     def brand_and_color
         "#{self.brand.try(:name)} - #{self.color}"
     end

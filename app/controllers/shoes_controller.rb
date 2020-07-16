@@ -1,4 +1,5 @@
 class ShoesController < ApplicationController
+    layout 'shoe'
 
     def index
         @shoes = Shoe.ordered_by_price

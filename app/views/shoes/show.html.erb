@@ -2,8 +2,12 @@
 
 <p>Price:  <%= number_to_currency(@shoe.price) %></p>
 
-<p>Limited Edition: <%= @shoe.limited_edition %></p>
+<p> <%= display_limited_edition(@shoe) %> </p>
+
 
 <%= link_to("edit shoe", edit_shoe_path(@shoe) )%>
 
 <%= link_to("delete shoe",shoe_path(@shoe), method: 'delete' )%>
+
+
+<%= render  @shoe %>
