@@ -6,8 +6,12 @@ class ShoesController < ApplicationController
     end
 
     def new
-        @shoe = Shoe.new
-        @shoe.build_brand
+        if params[:brand_id] && @brand = Brand.find_by_id(params[:brand_id])
+            @shoe = Shoe.new(brand_id: params[:brand_id])
+        else
+            @shoe = Shoe.new
+            @shoe.build_brand
+        end
     end
 
     def create

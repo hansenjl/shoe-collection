@@ -11,11 +11,8 @@
 <% end %>
 
 <%= form_for(@shoe) do |f|%>
-    <%= f.label :brand, "Brand:" %>
-    <%= f.collection_select :brand_id, Brand.all, :id, :name, prompt: true %>
-    <%= f.fields_for :brand do |b| %>
-      <%= render partial: 'brands/fields', locals: {f: b} %>
-    <% end %><br><br>
+    <%= nested_fields_check(f) %>
+    
     <%= f.label :price, "Price:" %>
     <%= f.number_field :price, min: 0, step: 0.01 %><br><br>
     <%= f.label :color, "Color:"%>
