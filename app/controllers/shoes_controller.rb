@@ -2,13 +2,28 @@ class ShoesController < ApplicationController
     layout 'shoe'
 
     def index
-        @shoes = Shoe.ordered_by_price
+        # is this a nested route?
+        if params[:brand_id] && @brand = Brand.find_by_id(params[:brand_id])
+            @shoes = @brand.shoes.ordered_by_price
+             # if so, we want only shoes of that brand
+        else #if not, show all the shoes
+            @shoes = Shoe.ordered_by_price
+        end
     end
 
     def new
-        @shoe = Shoe.new
-        @shoe.build_brand
+        if params[:brand_id] && @brand = Brand.find_by_id(params[:brand_id])
+            # instantiate a shoe that knows about @brand
+            # @shoe = Shoe.new(brand_id: params[:brand_id])
+            # @shoe.brand = @brand
+            @shoe = @brand.shoes.build
+        else
+            @shoe = Shoe.new
+            @shoe.build_brand
+        end
     end
+
+
 
     def create
        @shoe = Shoe.new(shoe_params)
@@ -17,6 +32,7 @@ class ShoesController < ApplicationController
           redirect_to shoe_path(@shoe)
        else
           #redisplay the form
+          @brand = Brand.find_by_id(params[:brand_id]) if params[:brand_id]
 
           render :new
        end
