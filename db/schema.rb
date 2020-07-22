@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_150505) do
+ActiveRecord::Schema.define(version: 2020_07_22_150718) do
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 2020_07_15_150505) do
     t.datetime "updated_at", null: false
     t.integer "brand_id"
     t.index ["brand_id"], name: "index_shoes_on_brand_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.string "uid"
+    t.string "provider"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
