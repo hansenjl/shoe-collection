@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_secure_password #validation presence of password
     has_many :shoes
+    has_many :brands, through:  :shoes
     validates :email, uniqueness: true
     validates :username, :email, presence: true
 

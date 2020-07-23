@@ -17,10 +17,13 @@ class Shoe < ApplicationRecord
         # associate that brand to this shoe
     end
 
-    def self.ordered_by_price
-        #self.all.sort_by{|shoe| shoe.price}.last
-        self.order(price: :desc)
-    end
+    scope :ordered_by_price, -> { order(price: :desc) }
+    scope :cheap_shoes, ->(price) {where('price < ?', price)}
+
+    # def self.ordered_by_price
+    #     #self.all.sort_by{|shoe| shoe.price}.last
+    #     self.order(price: :desc)
+    # end
 
     def brand_and_color
         "#{self.brand.try(:name)} - #{self.color}"

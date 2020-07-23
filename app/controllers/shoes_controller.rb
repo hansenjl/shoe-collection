@@ -1,4 +1,5 @@
 class ShoesController < ApplicationController
+    before_action :find_shoe, :redirect_if_not_owner, only: [:show, :edit, :update, :destroy]
     layout 'shoe'
 
     def index
@@ -7,7 +8,7 @@ class ShoesController < ApplicationController
             @shoes = @brand.shoes.ordered_by_price
              # if so, we want only shoes of that brand
         else #if not, show all the shoes
-            @shoes = Shoe.ordered_by_price
+            @shoes = Shoe.ordered_by_price.cheap_shoes(120)
         end
     end
 
@@ -26,8 +27,9 @@ class ShoesController < ApplicationController
 
 
     def create
-       @shoe = Shoe.new(shoe_params)
-       if @shoe.save
+       @shoe = current_user.shoes.build(shoe_params)
+       if @shoe.valid?
+            @shoe.save
           #successful
           redirect_to shoe_path(@shoe)
        else
@@ -39,17 +41,20 @@ class ShoesController < ApplicationController
     end
 
     def edit #get
-        @shoe = Shoe.find(params[:id])
+
+
     end
 
     def update #patch
-        @shoe = Shoe.find(params[:id])
-        @shoe.update(shoe_params)
-        redirect_to shoe_path(@shoe)
+        if @shoe.update(shoe_params)
+            redirect_to shoe_path(@shoe)
+        else
+            render :edit
+        end
     end
 
     def show
-        @shoe = Shoe.find(params[:id])
+
     end
 
     def expensive
@@ -57,8 +62,7 @@ class ShoesController < ApplicationController
     end
 
     def destroy
-        shoe = Shoe.find(params[:id])
-        shoe.destroy
+        @shoe.destroy
         redirect_to shoes_path
     end
 
@@ -67,4 +71,15 @@ class ShoesController < ApplicationController
     def shoe_params
         params.require(:shoe).permit(:price, :price_confirmation, :color, :limited_edition, :brand_id, brand_attributes: [:name])
     end
+
+    def find_shoe
+        @shoe = Shoe.find(params[:id])
+    end
+
+    def redirect_if_not_owner
+        if @shoe.user != current_user
+            redirect_to user_path(current_user), alert: "You can't edit this shoe!"
+        end
+    end
+
 end

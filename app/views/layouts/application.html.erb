@@ -13,12 +13,13 @@
     <%= link_to("All Shoes", shoes_path )%> |
     <%= link_to("Most Expensive Shoe", expensive_shoe_path )%> |
     <%= link_to("New Shoe", new_shoe_path )%> |
-    <%= link_to("All Brands", brands_path )%>
+    <%= link_to("All Brands", brands_path )%> |
+    <%= link_to("Log Out", '/logout', method: 'delete')%>
 
     <hr>
 
-    <% if flash[:message] %>
-      <div class="field_with_errors"><%= flash[:message] %></div>
+    <% if flash[:alert] %>
+      <div class="field_with_errors"><%= flash[:alert] %></div>
     <% end %>
     <%= yield %>
   </body>

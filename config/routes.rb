@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
 
 
+
+
   get '/shoes/expensive', to: 'shoes#expensive', as: 'expensive_shoe'
 
   resources :shoes
