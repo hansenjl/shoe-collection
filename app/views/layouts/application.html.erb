@@ -15,6 +15,11 @@
     <%= link_to("New Shoe", new_shoe_path )%> |
     <%= link_to("All Brands", brands_path )%>
 
+    <hr>
+
+    <% if flash[:message] %>
+      <div class="field_with_errors"><%= flash[:message] %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

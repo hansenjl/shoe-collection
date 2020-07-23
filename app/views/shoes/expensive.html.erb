@@ -1,6 +1,5 @@
 <h1>Most Expensive Shoe</h1>
 
-<% shoe = Shoe.all.sort_by(price).first  %>
 
 <h2> <%= link_to(@shoe.brand_and_color, shoe_path(@shoe))   %></h2>
 <p>Price:  <%= number_to_currency(@shoe.price) %></p>

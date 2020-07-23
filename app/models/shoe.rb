@@ -6,6 +6,7 @@ class Shoe < ApplicationRecord
     # validates :price_confirmation, presence: true
     validates :color, two_word: true
     belongs_to :brand   #brand & brand= method
+    belongs_to :user
     # accepts_nested_attributes_for :brand
 
     def brand_attributes=(attr)
